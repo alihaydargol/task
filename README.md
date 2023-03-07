@@ -3,9 +3,16 @@
 * To access H2 Console -> http://localhost:8080/h2-console
 * To access Graphiql -> http://localhost:8080/graphiql
 * Docker image -> https://hub.docker.com/r/alihaydargol/producter-task
+
+# Docker 
+
+Run container with this command.
+
+`docker run -p 8080:8080 task-producter`
+
 # H2 
 
-Can look audits from h2 console.
+Can look audits from h2 console. (Authorization disabled for h2-console)
 
 * username -> sa
 * password -> password
@@ -13,7 +20,7 @@ Can look audits from h2 console.
 
 # Graphiql
 
-Can try graphql queries. Token needed for all queries beside register and auth. 
+Can try GraphQL queries. Token needed for all queries besides register and auth.
 
 ## Creating Token
 
