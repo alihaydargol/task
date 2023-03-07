@@ -1,11 +1,17 @@
 type Query {
     findAll(page : Int!, size : Int!): [BasketballPlayer]
+    auth(username : String!): Token
 }
 
 type Mutation {
     addBasketballPlayer(player : BasketballPlayerInput!) : BasketballPlayer
     deleteBasketballPlayer(id : ID!) : BasketballPlayer
     edit(id : ID!, name : String) : BasketballPlayer
+    register(username : String) : Token
+}
+
+type Token {
+    authToken: String
 }
 
 input BasketballPlayerInput {

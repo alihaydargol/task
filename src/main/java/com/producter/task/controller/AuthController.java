@@ -1,30 +1,27 @@
 package com.producter.task.controller;
 
 import com.producter.task.errorhandler.exception.BasketballException;
-import com.producter.task.model.rest.AuthRequest;
-import com.producter.task.model.rest.AuthResponse;
+import com.producter.task.model.Token;
 import com.producter.task.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.stereotype.Controller;
 
-
-@RestController
-@RequestMapping("/login")
+@Controller
 @RequiredArgsConstructor
 public class AuthController {
 
     private final AuthenticationService service;
 
-    @PostMapping("/register")
-    public AuthResponse register(@RequestBody AuthRequest request) throws BasketballException {
-        return new AuthResponse(service.register(request.getUsername()));
+    @MutationMapping
+    public Token register(@Argument String username) throws BasketballException {
+        return new Token(service.register(username));
     }
 
-    @PostMapping("/auth")
-    public AuthResponse auth(@RequestBody AuthRequest request) throws BasketballException {
-        return new AuthResponse(service.auth(request.getUsername()));
+    @QueryMapping
+    public Token auth(@Argument String username) throws BasketballException {
+        return new Token(service.auth(username));
     }
 }
